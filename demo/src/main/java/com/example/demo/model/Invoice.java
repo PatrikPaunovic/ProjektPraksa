@@ -31,6 +31,13 @@ public class Invoice {
     @Column(name = ColumnNames.DATE)
     private LocalDateTime date;
 
+    @ManyToOne
+    @JoinColumn(name = "customer_id", insertable = false, updatable = false)
+    private Customer customer;
+
+    @Column(name = "customer_id")
+    private Long customerId;
+
     @Override
     public String toString() {
         return "Invoice{" +
@@ -38,6 +45,7 @@ public class Invoice {
                 ", invoiceNumber='" + invoiceNumber + '\'' +
                 ", amount=" + amount +
                 ", date=" + date +
+                ", customerId=" + customerId +
                 '}';
     }
 
